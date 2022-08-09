@@ -1,0 +1,36 @@
+﻿@model Employee
+
+@{
+    ViewBag.Title = Model != null ? "Edit" : "Create";
+}
+
+<h2>@ViewBag.Title Employee</h2>
+
+<form asp-action="@ViewBag.Title">
+    <label asp-for="EmployeeId" class="control-label"></label>
+    <input asp-for="EmployeeId" class="form-control" readonly />
+
+    <label asp-for="UserName" class="control-label"></label>
+    <input asp-for="UserName" class="form-control" />
+
+    <label asp-for="Gender" class="control-label"></label>
+    <select asp-for="Gender" asp-items="@(new List<SelectListItem>
+      { new SelectListItem{Text="male", Value="male"},
+        new SelectListItem{Text="female", Value="female"}
+      })" class="form-control">
+
+      <option>.....</option>
+
+    </select>
+
+    <label asp-for="City" class="control-label"></label>
+    <input asp-for="City" class="form-control" />
+
+    <label asp-for="DepartmentId" class="control-label"></label>
+    <select class="form-control" asp-for="DepartmentId" asp-items="@(new SelectList(ViewBag.Departments, "IdDepartment", "NameDeparment"))">
+        <option>.....</option>
+    </select>
+
+    <input type="submit" value="save" class="btn btn-primary" />
+    <a aasp-action="Index" class="btn btn-secondary">Cancle</a>
+</form>

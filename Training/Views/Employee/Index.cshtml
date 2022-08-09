@@ -1,0 +1,30 @@
+﻿@model IEnumerable<Training.Models.Employee>
+@using Training.Models;
+
+@{
+    ViewData["Title"] = "Employee List";
+}
+
+<a asp-action="Create" class="btn btn-primary">Create New Employee</a>
+
+<table class="table table-striped" style="font-family:Arial;">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">@Html.DisplayNameFor(model => model.EmployeeId)</th>
+            <th scope="col">@Html.DisplayNameFor(model => model.UserName)</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (Employee item in Model)
+       {
+           <tr>
+               <td>
+                    @Html.DisplayFor(modeItem => item.EmployeeId)
+                </td>
+                <td>
+                    @Html.ActionLink(item.UserName, "Details", new { @id=item.EmployeeId})
+                </td>
+            </tr>
+       }
+    </tbody>
+</table>
